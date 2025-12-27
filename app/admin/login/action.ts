@@ -5,13 +5,11 @@ export async function checkLogin(formData: FormData) {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
 
-  // ✅ Wapis .env se data utha rahe hain (Secure)
   const envEmail = process.env.ADMIN_EMAIL;
   const envPassword = process.env.ADMIN_PASSWORD;
 
   if (email === envEmail && password === envPassword) {
     
-    // ✅ Fix: await laga diya hai taaki error na aaye
     const cookieStore = await cookies();
 
     cookieStore.set('admin_session', 'true', {
@@ -23,6 +21,7 @@ export async function checkLogin(formData: FormData) {
 
     return { success: true }; 
   } else {
-    return { success: false };
+    // ✅ FIX: Yahan 'message' add kiya hai taaki TypeScript khush rahe
+    return { success: false, message: 'Invalid email or password' };
   }
 }
