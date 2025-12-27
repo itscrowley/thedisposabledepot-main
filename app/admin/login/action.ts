@@ -5,27 +5,29 @@ export async function checkLogin(formData: FormData) {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
 
-  const envEmail = process.env.ADMIN_EMAIL;
-  const envPassword = process.env.ADMIN_PASSWORD;
+  // 👇 Abhi ke liye DIRECT yahan likh rahe hain taaki login ho jaye
+  const envEmail = "admin@tdd.com";
+  const envPassword = "kidaji@8N";
 
-  // 👇 YEH HAI JASOOSI WALA CODE (Terminal check karna)
-  console.log("---------------- DEBUG START ----------------");
-  console.log("1. User ne Type kiya Email:", email);
-  console.log("2. Server ke pass Email hai:", envEmail);
-  console.log("3. User ne Type kiya Pass:", password);
-  console.log("4. Server ke pass Pass hai:", envPassword);
-  console.log("---------------- DEBUG END ------------------");
+  // Debugging ke liye print bhi karwa lete hain
+  console.log("Checking:", email, password);
+  console.log("Against:", envEmail, envPassword);
 
   if (email === envEmail && password === envPassword) {
+    
+    // ✅ Fix: await zaroori hai
     const cookieStore = await cookies();
+
     cookieStore.set('admin_session', 'true', {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      maxAge: 60 * 60 * 24, 
+      maxAge: 60 * 60 * 24, // 1 day
       path: '/',
     });
+
     return { success: true }; 
   } else {
+    // ✅ Fix: 'message' add kiya hai taaki error na aaye
     return { success: false, message: 'Invalid email or password' };
   }
 }
