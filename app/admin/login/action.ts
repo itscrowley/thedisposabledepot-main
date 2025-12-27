@@ -1,12 +1,11 @@
 'use server'
 import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation'; // ✅ Ye import zaroori hai
 
 export async function checkLogin(formData: FormData) {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
 
-  // Temporary Hardcoded Credentials
+  // Temporary Hardcoded (Baad mein .env kar denge)
   const envEmail = "admin@tdd.com";
   const envPassword = "kidaji@8N";
 
@@ -21,8 +20,8 @@ export async function checkLogin(formData: FormData) {
       path: '/',
     });
 
-    // 👇 Yahan change kiya hai: Return ki jagah seedha Redirect!
-    redirect('/admin'); 
+    // ✅ Redirect HATA DIYA. Sirf Success bhejo.
+    return { success: true }; 
 
   } else {
     return { success: false, message: 'Invalid email or password' };
