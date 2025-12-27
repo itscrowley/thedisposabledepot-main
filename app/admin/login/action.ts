@@ -8,6 +8,9 @@ export async function checkLogin(formData: FormData) {
 
   const envEmail = process.env.ADMIN_EMAIL;
   const envPassword = process.env.ADMIN_PASSWORD;
+  
+  // 👇 Ye line add karo check karne ke liye (Baad mein hata dena)
+  console.log("Typed:", password, "Env:", envPassword);
 
   if (email === envEmail && password === envPassword) {
     
