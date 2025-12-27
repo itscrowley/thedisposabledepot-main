@@ -1,0 +1,112 @@
+import React from 'react';
+import Link from 'next/link';
+import styles from '../styles/Footer.module.css'; 
+
+const Footer = () => {
+  return (
+    <footer className={styles.footer}>
+      <div className={styles.container}>
+        <div className={styles.row}>
+          
+          {/* Brand Info */}
+<div className={styles.footerCol}>
+  
+  {/* 👇👇 LOGO KO LINK MEIN WRAP KIYA 👇👇 */}
+  <Link href="/" style={{ textDecoration: 'none', cursor: 'pointer' }}>
+    <h2 className={styles.footerLogo}>The Disposable Depot</h2>
+  </Link>
+  {/* 👆👆 YAHAN KHATAM 👆👆 */}
+            <p className={styles.text} style={{ marginBottom: "20px" }}>
+              Best quality disposable items for all your business and event needs. Wholesale rates available.
+            </p>
+            <div className={styles.socialLinks}>
+    
+    {/* 1. Facebook Link */}
+    {/* "YOUR_PAGE_NAME" ki jagah apni Facebook profile/page ka naam likhein */}
+    <a 
+        href="https://www.facebook.com/TheDisposableDepot" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className={styles.socialIcon}
+        aria-label="Facebook"
+    >
+        <i className="fab fa-facebook-f"></i>
+    </a>
+
+    {/* 2. Instagram Link */}
+    {/* "YOUR_USERNAME" ki jagah apni Instagram ID likhein */}
+    <a 
+        href="https://www.instagram.com/the_disposable_depot/" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className={styles.socialIcon}
+        aria-label="Instagram"
+    >
+        <i className="fab fa-instagram"></i>
+    </a>
+
+    {/* 3. WhatsApp Link (Ye Sabse Important Hai) */}
+    {/* Maine aapka number add kar diya hai (91 + 9814812623) */}
+    <a 
+        href="https://wa.me/919814812623?text=Hello,%20I%20am%20interested%20in%20your%20products." 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className={styles.socialIcon}
+        aria-label="WhatsApp"
+    >
+        <i className="fab fa-whatsapp"></i>
+    </a>
+
+</div>
+          </div>
+
+          {/* Quick Links */}
+          <div className={styles.footerCol}>
+            <h3>Quick Links</h3>
+            <ul>
+              <li><Link href="/" className={styles.link}>Home</Link></li>
+              <li><Link href="/#catalogue" className={styles.link}>Our Products</Link></li>
+              <li><Link href="/calculator" className={styles.link}>Party Planner (Calculator)</Link></li>
+              <li><Link href="/faq" className={styles.link}>FAQs (Help)</Link></li>
+            <li className="mb-2">
+  <Link href="/planner" className="inline-block transition-all duration-300 hover:translate-x-2 hover:text-orange-500"
+  >
+    Smart Menu Planner 
+    
+    {/* Blink Badge */}
+    <span className="text-xs bg-green-500 text-white px-1.5 py-0.5 rounded ml-1 animate-pulse">
+      NEW
+    </span> 
+  </Link>
+</li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div className={styles.footerCol}>
+            <h3>Our Location</h3>
+            
+            {/* 👇👇 Sahi Location Wala Map 👇👇 */}
+<div style={{ marginTop: '20px', borderRadius: '30px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.2)' }}>
+  <iframe 
+    width="100%" 
+    height="150" 
+    frameBorder="0" 
+    scrolling="no" 
+    marginHeight="0" 
+    marginWidth="0" 
+    src="https://maps.google.com/maps?width=100%25&amp;height=150&amp;hl=en&amp;q=The%20Disposable%20Depot%2C%20Jalandhar%20-%20Kala%20Sanghian%20Rd%2C%20Kot%20Sadiq%2C%20Jalandhar%2C%20Punjab&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+  </iframe>
+</div>
+{/* 👆👆 Sahi Location Wala Map 👆👆 */}
+          </div>
+        </div>
+      </div>
+      <div className={styles.footerBottom}>
+        <p>&copy; {new Date().getFullYear()} The Disposable Depot. All Rights Reserved.</p>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
